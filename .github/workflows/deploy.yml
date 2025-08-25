@@ -1,1 +1,35 @@
+name: Deploy to GitHub Pages
 
+on:
+  push:
+    branches:
+      - main  # 必要に応じてブランチ名を変更
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          cd wev
+          npm ci
+
+      - name: Build
+        run: |
+          cd wev
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: wev/dist

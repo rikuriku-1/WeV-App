@@ -158,7 +158,7 @@ const UIControls: React.FC<UIControlsProps> = ({ fps, onToggleUI, onVRMLoad }) =
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .ui-controls {
           position: absolute;
           top: 0;

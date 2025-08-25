@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
-import { VRM, VRMLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
+import { VRM, VRMLoaderPlugin } from '@pixiv/three-vrm';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import Stats from 'stats.js';
 import FaceTrackingCanvas from './FaceTrackingCanvas';
@@ -222,7 +222,7 @@ const AvatarCanvas: React.FC<AvatarCanvasProps> = ({ onFPSUpdate }) => {
   };
 
   // デフォルトVRMモデルの読み込み関数
-  const loadDefaultVRM = async (loader: GLTFLoader, scene: THREE.Scene) => {
+  const loadDefaultVRM = async (_loader: GLTFLoader, scene: THREE.Scene) => {
     try {
       setIsLoading(true);
       

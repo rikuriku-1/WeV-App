@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { FaceMesh } from '@mediapipe/face_mesh';
 import { Camera } from '@mediapipe/camera_utils';
-import { Face, Vector } from 'kalidokit';
+import { Face } from 'kalidokit';
 
 interface FaceTrackingData {
   isActive: boolean;
@@ -173,7 +173,7 @@ export const useFaceTracking = ({ onUpdate, lowResolution = true }: UseFaceTrack
       setError(null);
       
       await initCamera();
-      const faceMesh = initFaceMesh();
+      initFaceMesh();
       
       if (videoRef.current) {
         const camera = new Camera(videoRef.current, {

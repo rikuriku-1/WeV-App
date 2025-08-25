@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import AvatarCanvas from './components/AvatarCanvas';
 import UIControls from './components/UIControls';
 import './App.css';

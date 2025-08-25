@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-# GitHub Token に対して書き込み権限を明示的に付与
 permissions:
   contents: write
   pages: write
@@ -18,7 +17,6 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
         with:
-          # フル履歴を取り、credentials を維持して push できるようにする
           fetch-depth: 0
           persist-credentials: true
 
@@ -32,7 +30,7 @@ jobs:
           cd wev
           npm ci
 
-      - name: Build
+      - name: Build with Vite (TypeScript→JavaScript)
         run: |
           cd wev
           npm run build
@@ -42,5 +40,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: wev/dist
-          # 必要なら publish_branch を指定：
-          # publish_branch: gh-pages
+          publish_branch: gh-pages
